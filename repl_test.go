@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -17,14 +16,22 @@ func TestCleanInput(t *testing.T) {
 		expected: []string{"hello", "world"},
 	}, {
 		input:    "",
-		expected: nil,
+		expected: []string{},
 	}, {
 		input:    "HellOWorld",
 		expected: []string{"helloworld"},
+	}, {
+		input:    "\tHellO World\n",
+		expected: []string{"hello", "world"},
 	}}
 
 	for _, c := range cases {
-		actual := cleanImput(c.input)
+		actual := cleanInput(c.input)
+
+		if len(actual) != len(c.expected) {
+			t.Errorf("expected word count is %d. Actual worrd count is %d. Test failed", len(c.expected), len(actual))
+			t.Fail()
+		}
 
 		for i := range actual {
 			word := actual[i]
@@ -32,9 +39,10 @@ func TestCleanInput(t *testing.T) {
 
 			if word != expectedWord {
 				t.Errorf("%s does not equal %s. Test Failed", word, expectedWord)
+				t.Fail()
 			}
 
 		}
-		fmt.Println("Test passed")
+
 	}
 }
