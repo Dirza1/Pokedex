@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/Dirza1/Pokedex/pokeapi"
 )
 
 func main() {
@@ -20,6 +22,11 @@ func main() {
 			name:        "help",
 			description: "Displays a help message",
 			callback:    nil,
+		},
+		"map": {
+			name:        "map",
+			description: "displays 20 pokemon locations",
+			callback:    commandMap,
 		},
 	}
 	help := commands["help"]
@@ -63,6 +70,11 @@ func commandHelp(commands map[string]cliCommand) func() error {
 		}
 		return nil
 	}
+}
+
+func commandMap() error {
+	pokeapi.Main()
+	return nil
 }
 
 type cliCommand struct {
