@@ -73,7 +73,10 @@ func commandHelp(commands map[string]cliCommand) func() error {
 }
 
 func commandMap() error {
-	pokeapi.Main()
+	/*locations :=*/ pokeapi.Main()
+	/*for location := range locations {
+		fmt.Println(location)
+	}*/
 	return nil
 }
 
