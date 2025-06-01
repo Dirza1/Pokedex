@@ -73,10 +73,7 @@ func commandHelp(commands map[string]cliCommand) func() error {
 }
 
 func commandMap() error {
-	/*locations :=*/ pokeapi.Main()
-	/*for location := range locations {
-		fmt.Println(location)
-	}*/
+	pokeapi.Main()
 	return nil
 }
 
@@ -84,4 +81,9 @@ type cliCommand struct {
 	name        string
 	description string
 	callback    func() error
+}
+
+type config struct {
+	Next     string
+	Previous string
 }

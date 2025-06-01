@@ -26,7 +26,6 @@ func Main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%d,\n %s,\n %v,\n", maps.Count, maps.Next, maps.Previous)
 	for _, location := range maps.Results {
 		fmt.Printf("%v\n", location.Name)
 	}
