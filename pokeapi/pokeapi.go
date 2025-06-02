@@ -36,8 +36,8 @@ type LocationArea struct {
 }
 
 type Maps struct {
-	Count    int            `json:"count"`
-	Next     string         `json:"next"`
-	Previous *string        `json:"previous"`
-	Results  []LocationArea `json:"results"`
+	Count       int            `json:"count"`
+	NextUrl     *string        `json:"next"`
+	PreviousUrl *string        `json:"previous"`
+	Results     []LocationArea `json:"results"`
 }

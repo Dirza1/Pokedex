@@ -100,13 +100,13 @@ func commandMap(config *config) func() error {
 			maps = pokeapi.Main(*config.Next)
 		} else {
 			maps = pokeapi.Main("https://pokeapi.co/api/v2/location-area")
-			fmt.Printf("Next type: %T\n", maps.Next)
+			fmt.Printf("Next type: %T\n", maps.NextUrl)
 		}
 		for _, location := range maps.Results {
 			fmt.Println(location.Name)
 		}
-		config.Next = maps.Next
-		config.Previous = maps.Previous
+		config.Next = maps.NextUrl
+		config.Previous = maps.PreviousUrl
 		return nil
 	}
 }
@@ -119,8 +119,8 @@ func commandMapB(config *config) func() error {
 			for _, location := range maps.Results {
 				fmt.Println(location.Name)
 			}
-			config.Next = maps.Next
-			config.Previous = maps.Previous
+			config.Next = maps.NextUrl
+			config.Previous = maps.PreviousUrl
 		} else {
 			fmt.Println("you're on the first page")
 		}
