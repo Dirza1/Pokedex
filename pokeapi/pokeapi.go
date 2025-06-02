@@ -8,8 +8,8 @@ import (
 	"net/http"
 )
 
-func Main() {
-	res, err := http.Get("https://pokeapi.co/api/v2/location-area")
+func Main(url string) Maps {
+	res, err := http.Get(url)
 	if err != nil {
 		fmt.Printf("There was an issue with the GET request%s", err)
 	}
@@ -26,10 +26,8 @@ func Main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	for _, location := range maps.Results {
-		fmt.Printf("%v\n", location.Name)
-	}
 
+	return maps
 }
 
 type LocationArea struct {
