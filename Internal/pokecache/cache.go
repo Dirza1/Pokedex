@@ -21,17 +21,9 @@ func NewCache() {
 
 func (c *Cache) Add(key string, val []byte) {
 	c.mu.Lock()
-	_, exisits := c.cacheEntry[key]
-	if exisits{
-		c.cacheEntry[key].val = val
-		c.cacheEntry[key].createdAt = time.Now()
-		c.mu.Unlock()
-	} else {
-		c.cacheEntry[key] := make(cacheEntry)
-		c.cacheEntry[key].val = val
-		c.cacheEntry[key].createdAt = time.Now()
-		c.mu.Unlock()
-	}
+	c.cacheEntry[key] = cacheEntry{val = val, createdAt = time.now()}
+	c.mu.Unlock()
+}
 	
 func (c *Cache) Get(key string) ([]byte, bool) {
 	c.mu.Lock()
